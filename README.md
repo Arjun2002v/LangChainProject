@@ -93,6 +93,28 @@ LangChainProject/
 └── README.md
 ```
 
+## LangGraph basics
+
+Install the dependencies (already installed in `.venv`):
+
+```powershell
+pip install -r requirements.txt
+```
+
+Run the examples in order:
+
+```powershell
+python langgraph_basics/01_hello_world.py        # State, nodes, edges (no LLM)
+python langgraph_basics/02_conditional_edges.py  # Branching with a router function
+python langgraph_basics/03_hello_llm.py          # A node that calls Ollama (llama3.2)
+```
+
+A LangGraph graph is built from:
+
+- **State:** a typed dict shared by every node.
+- **Node:** a function that takes the state and returns the keys it updates.
+- **Edge:** sets which node runs next (`START` and `END` mark the entry and exit).
+
 ## Core RAG flow
 
 ```text
