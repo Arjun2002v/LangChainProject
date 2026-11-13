@@ -107,6 +107,7 @@ Run the examples in order:
 python langgraph_basics/01_hello_world.py        # State, nodes, edges (no LLM)
 python langgraph_basics/02_conditional_edges.py  # Branching with a router function
 python langgraph_basics/03_hello_llm.py          # A node that calls Ollama (llama3.2)
+python langgraph_basics/04_agent_with_tools.py   # Agent: tool-calling loop + chat memory
 ```
 
 A LangGraph graph is built from:
@@ -114,6 +115,8 @@ A LangGraph graph is built from:
 - **State:** a typed dict shared by every node.
 - **Node:** a function that takes the state and returns the keys it updates.
 - **Edge:** sets which node runs next (`START` and `END` mark the entry and exit).
+- **Tool:** a function the LLM can ask to run; `ToolNode` runs it and the result goes back to the LLM.
+- **Checkpointer:** saves the state per `thread_id`, so a conversation remains available across turns.
 
 ## Core RAG flow
 
